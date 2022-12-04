@@ -4,7 +4,7 @@ import discord
 from discord import app_commands
 
 
-MY_GUILD = discord.Object(id=0)  # replace with your guild id
+MY_GUILD = discord.Object(id=970630227778732062)  # replace with your guild id
 
 
 class MyClient(discord.Client):
