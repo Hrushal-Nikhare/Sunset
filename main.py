@@ -113,4 +113,4 @@ async def report_message(interaction: discord.Interaction, message: discord.Mess
     await log_channel.send(embed=embed, view=url_view)
 
 
-client.run('token')
+client.run(os.environ["DISCORD_TOKEN"])
