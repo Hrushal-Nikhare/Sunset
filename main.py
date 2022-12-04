@@ -1,26 +1,22 @@
-# This example requires the 'message_content' privileged intents
+# This example requires the 'message_content' intent.
 
-import os
 import discord
-from discord.ext import commands
-
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix='!', intents=intents)
 
+client = discord.Client(intents=intents)
 
-@bot.event
+@client.event
 async def on_ready():
-    print(f"Logged in as {bot.user}")
+    print(f'We have logged in as {client.user}')
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
 
-@bot.command()
-async def hello(ctx):
-    await ctx.send("Choo choo! 🚅")
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
 
-
-bot.run(os.environ["DISCORD_TOKEN"])
+client.run('your token here')
