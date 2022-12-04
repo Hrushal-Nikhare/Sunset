@@ -112,5 +112,12 @@ async def report_message(interaction: discord.Interaction, message: discord.Mess
 
     await log_channel.send(embed=embed, view=url_view)
 
+@client.tree.command()
+async def tuition_time(interaction: discord.Interaction):
+    """ Get the Tuition Time for today"""
+    messages = [message async for message in interaction.guild.get_channel(1044920970298798080).history(limit=12)]
+# messages is now a list of Message...
+    await interaction.response.send_message(f'Tuition Time is {messages[0].content}',ephemeral=True)
+
 
 client.run(os.environ["DISCORD_TOKEN"])
