@@ -2,7 +2,7 @@ from typing import Optional
 import os
 import discord
 from discord import app_commands
-
+import random
 
 MY_GUILD = discord.Object(id=970630227778732062)  # replace with your guild id
 
@@ -37,21 +37,6 @@ async def on_ready():
     print(f'Logged in as {client.user} (ID: {client.user.id})')
     print('------')
 
-
-@client.tree.command()
-async def hello(interaction: discord.Interaction):
-    """Says hello!"""
-    await interaction.response.send_message(f'Hi, {interaction.user.mention}')
-
-
-@client.tree.command()
-@app_commands.describe(
-    first_value='The first value you want to add something to',
-    second_value='The value you want to add to the first value',
-)
-async def add(interaction: discord.Interaction, first_value: int, second_value: int):
-    """Adds two numbers together."""
-    await interaction.response.send_message(f'{first_value} + {second_value} = {first_value + second_value}')
 
 
 # The rename decorator allows us to change the display of the parameter on Discord.
@@ -119,5 +104,20 @@ async def tuition_time(interaction: discord.Interaction):
 # messages is now a list of Message...
     await interaction.response.send_message(f'Tuition Time is {messages[0].content}',ephemeral=True)
 
+@client.tree.command()
+async def ooc(interaction: discord.Interaction):
+    """Out of Context Message lmao"""
+    img = random.choice(["","","",""])
+    await interaction.response.send_message(f'{img}')
+
+@client.tree.command()
+async def gay(interaction: discord.Interaction,member: discord.Member):
+    """How gay is the member"""
+    if member.name in ["_Baji_.", "_Itachi_."]:
+        await interaction.response.send_message(f'{member.name} is {random.randint(98,1000)}% gay')
+    elif member.name in ["CarbonCap", "DeletedUser"]:
+        await interaction.response.send_message(f'{member.name} is {random.randint(0,5)}% gay')
+    else:
+        await interaction.response.send_message(f'{member.name} is {random.randint(0,103)}% gay')
 
 client.run(os.environ["DISCORD_TOKEN"])
