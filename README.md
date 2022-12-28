@@ -1,27 +1,31 @@
 ---
-title: Discord Python bot
+title: Sunset
 description: A Discord bot written in Python
 tags:
   - python
   - discord.py
 ---
 
-# Discord.py Example
+# Sunset
 
-This example starts a Discord bot using [discord.py](https://discordpy.readthedocs.io/en/stable/).
+A Discord bot using [discord.py](https://discordpy.readthedocs.io/en/stable/).
 
-[![Deploy on Railway](https://railway.app/new/template/PxM3nl)
+
 
 ## ✨ Features
 
-- Python
-- Discord.py
+- How Gay is a user?
+- Time to meet for today
+- Send a Message
+- Send Out of Context Messages
+- Impersonate a user
 
 ## 💁‍♀️ How to use
 
 - Install packages using `pip install -r requirements.txt`
+- Create a environment variable named DISCORD_TOKEN and set it to your bot's discord token
 - Start the bot using `python main.py`
 
 ## 📝 Notes
 
-This is a basic bot with the prefix `!`, more information can be founded at their [offical documentation](https://discordpy.readthedocs.io/en/stable/api.html).
+This is a simple / commands bot
