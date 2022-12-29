@@ -90,12 +90,12 @@ async def report_message(interaction: discord.Interaction, message: discord.Mess
 		embed.description = message.content
 
 	embed.set_author(name=message.author.display_name,
-					 icon_url=message.author.display_avatar.url)
+					icon_url=message.author.display_avatar.url)
 	embed.timestamp = message.created_at
 
 	url_view = discord.ui.View()
 	url_view.add_item(discord.ui.Button(label='Go to Message',
-					  style=discord.ButtonStyle.url, url=message.jump_url))
+										style=discord.ButtonStyle.url, url=message.jump_url))
 
 	await log_channel.send(embed=embed, view=url_view)
 
@@ -130,7 +130,7 @@ async def gay(interaction: discord.Interaction, member: discord.Member):
 
 @client.tree.command()
 async def impersonate(ctx: discord.Interaction, user: discord.User, message: str):
-	webhook = await ctx.channel.create_webhook(name = user.display_name)
+	webhook = await ctx.channel.create_webhook(name=user.display_name)
 	await webhook.send(message, username=user.display_name, avatar_url=user.display_avatar)
 	await webhook.delete()
 	await ctx.response.send_message('Sent!', ephemeral=True)
